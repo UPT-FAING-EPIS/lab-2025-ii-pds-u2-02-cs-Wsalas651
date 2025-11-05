@@ -27,8 +27,8 @@ env:
     ./Notifications/Notifications.Domain.Tests/Notifications.Domain.Tests.csproj
 
   # Configuración de SonarCloud
-  SONAR_PROJECT_KEY: si889_u2lab02
-  SONAR_ORGANIZATION: si889
+  SONAR_PROJECT_KEY: 72943816s_si889-u2lab02
+  SONAR_ORGANIZATION: 72943816s
 
 jobs:
   # -----------------------------------------------------------
