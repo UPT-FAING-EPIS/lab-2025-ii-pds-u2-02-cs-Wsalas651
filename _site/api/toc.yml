@@ -1,0 +1,41 @@
+### YamlMime:TableOfContent
+items:
+- uid: CustomerApp.Domain
+  name: CustomerApp.Domain
+  type: Namespace
+  items:
+  - uid: CustomerApp.Domain.Customer
+    name: Customer
+    type: Class
+  - uid: CustomerApp.Domain.DataAccessLayer
+    name: DataAccessLayer
+    type: Class
+  - uid: CustomerApp.Domain.EmailService
+    name: EmailService
+    type: Class
+  - uid: CustomerApp.Domain.Validator
+    name: Validator
+    type: Class
+- uid: Notifications.Domain
+  name: Notifications.Domain
+  type: Namespace
+  items:
+  - uid: Notifications.Domain.AbstractMessage
+    name: AbstractMessage
+    type: Class
+  - uid: Notifications.Domain.EmailMessageSender
+    name: EmailMessageSender
+    type: Class
+  - uid: Notifications.Domain.IMessageSender
+    name: IMessageSender
+    type: Interface
+  - uid: Notifications.Domain.LongMessage
+    name: LongMessage
+    type: Class
+  - uid: Notifications.Domain.ShortMessage
+    name: ShortMessage
+    type: Class
+  - uid: Notifications.Domain.SmsMessageSender
+    name: SmsMessageSender
+    type: Class
+memberLayout: SamePage

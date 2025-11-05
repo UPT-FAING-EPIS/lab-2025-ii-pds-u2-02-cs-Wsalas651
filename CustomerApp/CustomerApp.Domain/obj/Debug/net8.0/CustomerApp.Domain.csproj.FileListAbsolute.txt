@@ -1,0 +1,10 @@
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\bin\Debug\net8.0\CustomerApp.Domain.deps.json
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\bin\Debug\net8.0\CustomerApp.Domain.dll
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\bin\Debug\net8.0\CustomerApp.Domain.pdb
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\obj\Debug\net8.0\CustomerApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\obj\Debug\net8.0\CustomerApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\obj\Debug\net8.0\CustomerApp.Domain.sourcelink.json
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\obj\Debug\net8.0\CustomerApp.Domain.dll
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\obj\Debug\net8.0\refint\CustomerApp.Domain.dll
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\obj\Debug\net8.0\CustomerApp.Domain.pdb
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\CustomerApp\CustomerApp.Domain\obj\Debug\net8.0\ref\CustomerApp.Domain.dll

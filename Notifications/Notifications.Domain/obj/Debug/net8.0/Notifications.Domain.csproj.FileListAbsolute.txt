@@ -1,0 +1,10 @@
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\bin\Debug\net8.0\Notifications.Domain.deps.json
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\bin\Debug\net8.0\Notifications.Domain.dll
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\bin\Debug\net8.0\Notifications.Domain.pdb
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\obj\Debug\net8.0\Notifications.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\obj\Debug\net8.0\Notifications.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\obj\Debug\net8.0\Notifications.Domain.sourcelink.json
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\obj\Debug\net8.0\Notifications.Domain.dll
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\obj\Debug\net8.0\refint\Notifications.Domain.dll
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\obj\Debug\net8.0\Notifications.Domain.pdb
+C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\obj\Debug\net8.0\ref\Notifications.Domain.dll

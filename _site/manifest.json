@@ -1,0 +1,319 @@
+{
+  "source_base_path": "C:/Users/ASUS/Music/PATRONES/U2/lab-2025-ii-pds-u2-02-cs-Wsalas651",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CustomerApp/disenio.md",
+      "output": {
+        ".html": {
+          "relative_path": "CustomerApp/disenio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CustomerApp/docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "CustomerApp/docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CustomerApp/docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "CustomerApp/docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "CustomerApp/docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "CustomerApp/docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "CustomerApp/docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Notifications/disenio.md",
+      "output": {
+        ".html": {
+          "relative_path": "Notifications/disenio.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/CustomerApp.Domain.Customer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/CustomerApp.Domain.Customer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CustomerApp.Domain.Customer",
+      "Summary": "<p sourcefile=\"_site/api/CustomerApp.Domain.Customer.yml\" sourcestartlinenumber=\"1\">Representa un cliente con información básica.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/CustomerApp.Domain.DataAccessLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/CustomerApp.Domain.DataAccessLayer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CustomerApp.Domain.DataAccessLayer",
+      "Summary": "<p sourcefile=\"_site/api/CustomerApp.Domain.DataAccessLayer.yml\" sourcestartlinenumber=\"1\">Clase para manejar el acceso a datos de clientes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/CustomerApp.Domain.EmailService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/CustomerApp.Domain.EmailService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CustomerApp.Domain.EmailService",
+      "Summary": "<p sourcefile=\"_site/api/CustomerApp.Domain.EmailService.yml\" sourcestartlinenumber=\"1\">Servicio para enviar correos electrónicos de registro.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/CustomerApp.Domain.Validator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/CustomerApp.Domain.Validator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CustomerApp.Domain.Validator",
+      "Summary": "<p sourcefile=\"_site/api/CustomerApp.Domain.Validator.yml\" sourcestartlinenumber=\"1\">Clase para validar objetos de tipo Customer.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/CustomerApp.Domain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/CustomerApp.Domain.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CustomerApp.Domain",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/Notifications.Domain.AbstractMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/Notifications.Domain.AbstractMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Notifications.Domain.AbstractMessage",
+      "Summary": "<p sourcefile=\"_site/api/Notifications.Domain.AbstractMessage.yml\" sourcestartlinenumber=\"1\">Clase base abstracta para definir tipos de mensajes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/Notifications.Domain.EmailMessageSender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/Notifications.Domain.EmailMessageSender.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Notifications.Domain.EmailMessageSender",
+      "Summary": "<p sourcefile=\"_site/api/Notifications.Domain.EmailMessageSender.yml\" sourcestartlinenumber=\"1\">Implementación del envío de mensajes mediante correo electrónico.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/Notifications.Domain.IMessageSender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/Notifications.Domain.IMessageSender.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Notifications.Domain.IMessageSender",
+      "Summary": "<p sourcefile=\"_site/api/Notifications.Domain.IMessageSender.yml\" sourcestartlinenumber=\"1\">Interfaz para implementar el envío de mensajes.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/Notifications.Domain.LongMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/Notifications.Domain.LongMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Notifications.Domain.LongMessage",
+      "Summary": "<p sourcefile=\"_site/api/Notifications.Domain.LongMessage.yml\" sourcestartlinenumber=\"1\">Clase para mensajes largos que delega el envío al remitente configurado.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/Notifications.Domain.ShortMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/Notifications.Domain.ShortMessage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Notifications.Domain.ShortMessage",
+      "Summary": "<p sourcefile=\"_site/api/Notifications.Domain.ShortMessage.yml\" sourcestartlinenumber=\"1\">Clase para mensajes cortos con validación de longitud.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/Notifications.Domain.SmsMessageSender.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/Notifications.Domain.SmsMessageSender.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Notifications.Domain.SmsMessageSender",
+      "Summary": "<p sourcefile=\"_site/api/Notifications.Domain.SmsMessageSender.yml\" sourcestartlinenumber=\"1\">Implementación del envío de mensajes mediante SMS.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "_site/api/Notifications.Domain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/Notifications.Domain.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Notifications.Domain",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "_site/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "_site/api/toc.html"
+        },
+        ".json": {
+          "relative_path": "_site/api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

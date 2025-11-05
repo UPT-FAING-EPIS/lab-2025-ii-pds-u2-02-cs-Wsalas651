@@ -1,0 +1,44 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": ["**/*.csproj"], 
+          "src": "CustomerApp",
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**",
+            "**/*Tests.csproj" 
+          ]
+        },
+        {
+          "files": ["**/*.csproj"], 
+          "src": "Notifications",
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**",
+            "**/*Tests.csproj" 
+          ]
+        }
+      ],
+      "dest": "_site/api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["**/*.md", "**/*.yml"]
+      }
+    ],
+    "resource": [
+      {
+        "files": ["**/*.png", "**/*.jpg", "**/*.svg", "**/*.woff", "**/*.woff2"]
+      }
+    ],
+    "dest": "_site",
+    "globalMetadata": {
+      "_enableSearch": true
+    },
+    "template": ["default"]
+  }
+}

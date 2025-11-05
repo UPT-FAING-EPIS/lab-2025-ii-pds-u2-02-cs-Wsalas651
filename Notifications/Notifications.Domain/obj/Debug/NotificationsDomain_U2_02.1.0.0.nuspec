@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NotificationsDomain_U2_02</id>
+    <version>1.0.0</version>
+    <authors>UPT-FAING-EPIS</authors>
+    <description>Domain logic for Notifications</description>
+    <tags>Notifications Domain</tags>
+    <repository type="git" commit="d0d6121e347a7821ec22c6442ee771fc775042f6" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\ASUS\Music\PATRONES\U2\lab-2025-ii-pds-u2-02-cs-Wsalas651\Notifications\Notifications.Domain\bin\Debug\net8.0\Notifications.Domain.dll" target="lib\net8.0\Notifications.Domain.dll" />
+  </files>
+</package>
