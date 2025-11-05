@@ -11,12 +11,17 @@ permissions:
   packages: write
 
 env:
+  # ✅ CORRECCIÓN: Lista de archivos de solución
+  SOLUTION_FILES: |
+    CustomerApp/CustomerApp.sln
+    Notifications/Notifications.sln
+
   # Proyectos de dominio que serán empaquetados y analizados
   DOMAIN_PROJECTS: |
     ./CustomerApp/CustomerApp.Domain/CustomerApp.Domain.csproj
     ./Notifications/Notifications.Domain/Notifications.Domain.csproj
   
-  # Proyectos de prueba (Asumo que tienen la estructura de nomenclatura estándar)
+  # Proyectos de prueba 
   TEST_PROJECTS: |
     ./CustomerApp/CustomerApp.Domain.Tests/CustomerApp.Domain.Tests.csproj
     ./Notifications/Notifications.Domain.Tests/Notifications.Domain.Tests.csproj
@@ -28,7 +33,7 @@ env:
 jobs:
   # -----------------------------------------------------------
   # JOB 1: sonar-analysis
-  # Ejecuta las pruebas y el análisis de cobertura una sola vez para toda la solución.
+  # Restaura AMBAS soluciones y luego realiza el análisis.
   # -----------------------------------------------------------
   sonar-analysis:
     runs-on: ubuntu-latest
@@ -36,7 +41,6 @@ jobs:
       - name: Checkout repository (Fetch Depth 0 for Sonar)
         uses: actions/checkout@v4
         with:
-          # Es crucial para que SonarCloud pueda analizar el historial de commits
           fetch-depth: 0 
 
       - name: Setup .NET
@@ -44,9 +48,15 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      # Restaurar dependencias de toda la solución
-      - name: Restore Solution Dependencies
-        run: dotnet restore
+      # ✅ CORRECCIÓN: Restaura dependencias de AMBAS soluciones
+      - name: Restore ALL Solution Dependencies
+        run: |
+          echo "${{ env.SOLUTION_FILES }}" | while read sln_file; do
+            if [ -n "$sln_file" ]; then
+              echo "Restoring dependencies for $sln_file"
+              dotnet restore $sln_file
+            fi
+          done
 
       - name: Install SonarCloud Scanner
         run: dotnet tool install --global dotnet-sonarscanner
@@ -58,7 +68,8 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           # 1. BEGIN: Inicializa el análisis para toda la solución
-          # Configura la ruta de los reportes de cobertura (Coverlet genera el XML)
+          # Usamos un archivo .sln para que Sonar pueda mapear todo, aunque debimos restaurar ambos.
+          # Nota: Si SonarCloud tiene problemas para mapear múltiples archivos .sln, se recomienda usar el parámetro /s: para apuntar a un directorio de nivel superior, pero intentaremos con begin sin .sln
           dotnet sonarscanner begin \
             /k:"${{ env.SONAR_PROJECT_KEY }}" \
             /o:"${{ env.SONAR_ORGANIZATION }}" \
@@ -73,6 +84,7 @@ jobs:
           echo "${{ env.TEST_PROJECTS }}" | while read project_path; do
             if [ -n "$project_path" ]; then
               echo "Executing tests for $project_path"
+              # Usamos --no-restore --no-build porque ya hicimos un restore general y sonarscanner maneja la compilación.
               dotnet test $project_path --no-restore --no-build \
                 /p:CollectCoverage=true \
                 /p:CoverletOutputFormat=opencover \
@@ -112,17 +124,16 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
+        # Se restaura solo el proyecto específico de la matriz (la restauración completa ya se hizo en el job anterior)
         run: dotnet restore ${{ matrix.project }}
 
       - name: Build project
         run: dotnet build ${{ matrix.project }} --configuration Release
 
       - name: Pack NuGet package
-        # La ruta de salida usa el hash del proyecto para evitar conflictos si se ejecuta en paralelo
         run: dotnet pack ${{ matrix.project }} --configuration Release --output ./packages/$(echo ${{ matrix.project }} | md5sum | head -c 8)
 
       - name: Publish NuGet package to GitHub Packages
-        # Usamos GITHUB_TOKEN estándar, ya que GitHub Packages lo admite.
         run: dotnet nuget push ./packages/**/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key "${{ secrets.GITHUB_TOKEN }}" --skip-duplicate
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
