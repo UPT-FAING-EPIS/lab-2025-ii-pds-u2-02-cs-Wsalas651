@@ -1,0 +1,128 @@
+name: Package and Publish NuGet
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+env:
+  # Proyectos de dominio que serán empaquetados y analizados
+  DOMAIN_PROJECTS: |
+    ./CustomerApp/CustomerApp.Domain/CustomerApp.Domain.csproj
+    ./Notifications/Notifications.Domain/Notifications.Domain.csproj
+  
+  # Proyectos de prueba (Asumo que tienen la estructura de nomenclatura estándar)
+  TEST_PROJECTS: |
+    ./CustomerApp/CustomerApp.Domain.Tests/CustomerApp.Domain.Tests.csproj
+    ./Notifications/Notifications.Domain.Tests/Notifications.Domain.Tests.csproj
+
+  # Configuración de SonarCloud
+  SONAR_PROJECT_KEY: si889_u2lab02
+  SONAR_ORGANIZATION: si889
+
+jobs:
+  # -----------------------------------------------------------
+  # JOB 1: sonar-analysis
+  # Ejecuta las pruebas y el análisis de cobertura una sola vez para toda la solución.
+  # -----------------------------------------------------------
+  sonar-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository (Fetch Depth 0 for Sonar)
+        uses: actions/checkout@v4
+        with:
+          # Es crucial para que SonarCloud pueda analizar el historial de commits
+          fetch-depth: 0 
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      # Restaurar dependencias de toda la solución
+      - name: Restore Solution Dependencies
+        run: dotnet restore
+
+      - name: Install SonarCloud Scanner
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Start SonarCloud Analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          # 1. BEGIN: Inicializa el análisis para toda la solución
+          # Configura la ruta de los reportes de cobertura (Coverlet genera el XML)
+          dotnet sonarscanner begin \
+            /k:"${{ env.SONAR_PROJECT_KEY }}" \
+            /o:"${{ env.SONAR_ORGANIZATION }}" \
+            /d:sonar.login="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.host.url="https://sonarcloud.io" \
+            /d:sonar.cs.opencover.reportsPaths="**/TestResults/coverage/coverage.xml"
+
+      # 2. RUN TESTS and BUILD: Ejecuta las pruebas en todos los proyectos de prueba y genera cobertura
+      - name: Run Tests and Generate Coverage Report
+        run: |
+          # Iteramos sobre los proyectos de prueba definidos en TEST_PROJECTS
+          echo "${{ env.TEST_PROJECTS }}" | while read project_path; do
+            if [ -n "$project_path" ]; then
+              echo "Executing tests for $project_path"
+              dotnet test $project_path --no-restore --no-build \
+                /p:CollectCoverage=true \
+                /p:CoverletOutputFormat=opencover \
+                /p:CoverletOutput="./TestResults/coverage/"
+            fi
+          done
+            
+      # 3. END: Finaliza el análisis y envía los resultados a SonarCloud
+      - name: End SonarCloud Analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
+  # -----------------------------------------------------------
+  # JOB 2: package-and-publish
+  # Empaqueta y publica los proyectos de dominio individualmente.
+  # -----------------------------------------------------------
+  package-and-publish:
+    needs: sonar-analysis
+    runs-on: ubuntu-latest
+
+    # Usamos la matriz para iterar solo sobre los proyectos de dominio
+    strategy:
+      matrix:
+        project: [
+          ./CustomerApp/CustomerApp.Domain/CustomerApp.Domain.csproj,
+          ./Notifications/Notifications.Domain/Notifications.Domain.csproj
+        ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ${{ matrix.project }}
+
+      - name: Build project
+        run: dotnet build ${{ matrix.project }} --configuration Release
+
+      - name: Pack NuGet package
+        # La ruta de salida usa el hash del proyecto para evitar conflictos si se ejecuta en paralelo
+        run: dotnet pack ${{ matrix.project }} --configuration Release --output ./packages/$(echo ${{ matrix.project }} | md5sum | head -c 8)
+
+      - name: Publish NuGet package to GitHub Packages
+        # Usamos GITHUB_TOKEN estándar, ya que GitHub Packages lo admite.
+        run: dotnet nuget push ./packages/**/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key "${{ secrets.GITHUB_TOKEN }}" --skip-duplicate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
