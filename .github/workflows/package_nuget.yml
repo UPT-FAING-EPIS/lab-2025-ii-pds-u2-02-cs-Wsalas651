@@ -151,9 +151,13 @@ jobs:
         run: dotnet pack ${{ matrix.project }} --configuration Release --output ./packages/$(echo ${{ matrix.project }} | md5sum | head -c 8)
 
       - name: Publish NuGet package to GitHub Packages
-        run: dotnet nuget push "./packages/**/*.nupkg" \
-            --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
-            --api-key "${{ secrets.GITHUB_TOKEN }}" \
-            --skip-duplicate
+        run: |
+            for file in $(find ./packages -name "*.nupkg"); do
+            echo "📦 Publicando paquete: $file"
+            dotnet nuget push "$file" \
+                --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
+                --api-key "${{ secrets.GITHUB_TOKEN }}" \
+                --skip-duplicate
+            done
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
